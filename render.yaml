@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: sportsbooking
+    env: docker
+    plan: starter
+    region: oregon
+    dockerfilePath: Dockerfile
+    autoDeploy: true
+    buildCommand: mvn -B clean package -DskipTests
+    startCommand: java -jar /app/app.jar
+    envVars:
+      - key: JDBC_DATABASE_URL
+        value: ${DATABASE_URL}
+      - key: JDBC_DATABASE_USERNAME
+        value: ${DATABASE_USERNAME}
+      - key: JDBC_DATABASE_PASSWORD
+        value: ${DATABASE_PASSWORD}
+
+databases:
+  - name: sportsbooking-db
+    type: postgresql
+    plan: starter
+    region: oregon
+
+# Optional: if you want Render to inject the DATABASE_URL with service link
+# (postgre connection) use linked service in Render dashboard config.

@@ -16,11 +16,5 @@ services:
       - key: JDBC_DATABASE_PASSWORD
         value: ${DATABASE_PASSWORD}
 
-databases:
-  - name: sportsbooking-db
-    engine: postgresql
-    plan: starter
-    region: oregon
-
 # Optional: if you want Render to inject the DATABASE_URL with service link
 # (postgre connection) use linked service in Render dashboard config.
